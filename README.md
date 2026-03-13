@@ -1,3 +1,7 @@
+> Repo role: editor-extension
+> Monorepo source path: `tools/vscode-aethelred/` in `AethelredFoundation/aethelred`
+> Canonical public source of truth: `AethelredFoundation/aethelred`
+
 <h1 align="center">vscode-aethelred</h1>
 
 <p align="center">
