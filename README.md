@@ -1,90 +1,97 @@
-<h1 align="center">vscode-aethelred</h1>
+# Aethelred Sovereign Copilot
 
-<p align="center">
- <strong>The official VS Code extension for Aethelred blockchain development</strong><br/>
- The only Layer 1 blockchain with a native IDE extension.
-</p>
+Aethelred Sovereign Copilot is the official VS Code extension for working with the Aethelred protocol, validator tooling, and sovereign compute workflows.
 
-<p align="center">
- <a href="https://github.com/aethelred-foundation/vscode-aethelred/actions/workflows/repo-security-baseline.yml"><img src="https://img.shields.io/github/actions/workflow/status/aethelred-foundation/vscode-aethelred/repo-security-baseline.yml?branch=main&style=flat-square&label=Security" alt="Security"></a>
- <a href="https://marketplace.visualstudio.com/items?itemName=aethelred.vscode-aethelred"><img src="https://img.shields.io/visual-studio-marketplace/v/aethelred.vscode-aethelred?style=flat-square&logo=visualstudiocode" alt="VS Marketplace"></a>
- <a href="https://marketplace.visualstudio.com/items?itemName=aethelred.vscode-aethelred"><img src="https://img.shields.io/visual-studio-marketplace/i/aethelred.vscode-aethelred?style=flat-square&label=installs" alt="Installs"></a>
- <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue?style=flat-square" alt="License"></a>
-</p>
-<p align="center">
- <img src="https://img.shields.io/badge/TypeScript-5.7-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
- <img src="https://img.shields.io/badge/Solidity_Syntax-Highlighting-363636?style=flat-square&logo=solidity" alt="Solidity">
- <a href="https://docs.aethelred.io"><img src="https://img.shields.io/badge/docs-aethelred.io-orange?style=flat-square" alt="Docs"></a>
-</p>
+It adds editor-side diagnostics, hover intelligence, code lens actions, Helix language support, and direct CLI-backed protocol checks for developers building on Aethelred.
 
----
+## Core capabilities
 
-## Install
+- Real-time compliance and sovereignty diagnostics for supported source files
+- Hover details for sovereign functions, hardware targets, and policy context
+- Code lens actions for scans, remediation, and protocol-aware quick actions
+- Status bar visibility for jurisdiction, CLI availability, and active checks
+- Helix DSL syntax highlighting and snippets for protocol-native workflows
+- Direct integration with the `aethel` CLI for local and network-aware checks
 
-Search **"Aethelred"** in VS Code Extensions, or:
+## Supported languages
+
+- Python
+- Rust
+- TypeScript
+- JavaScript
+- Helix DSL (`.helix`, `.hlx`)
+
+## Requirements
+
+The extension is designed to work with the Aethelred CLI.
+
+Recommended installation paths:
 
 ```bash
-code --install-extension aethelred.vscode-aethelred
+cargo install aethelred-cli
 ```
 
----
+Or use the CLI installation instructions from the protocol docs:
 
-## Features
+- [Aethelred CLI installation](https://docs.aethelred.io/cli/install)
 
-### Node Status Bar
-Real-time connection status, block height, and TPS in the status bar.
+## Configuration highlights
 
-### AIP Syntax Highlighting
-Full syntax highlighting for `.aip` Aethelred Improvement Proposal files.
+| Setting | Default | Purpose |
+| --- | --- | --- |
+| `aethelred.jurisdiction` | `Global` | Active jurisdiction for diagnostics |
+| `aethelred.compliance.regulations` | `[`"`GDPR`"`]` | Ruleset used during checks |
+| `aethelred.linting.enabled` | `true` | Enables background diagnostics |
+| `aethelred.linting.onSave` | `true` | Runs checks on save |
+| `aethelred.hardware.target` | `auto` | Preferred hardware profile |
+| `aethelred.network.chain` | `testnet` | Active network profile |
+| `aethelred.network.endpoint` | `https://api.testnet.aethelred.io` | Protocol API endpoint |
 
-### Seal Verification
-Right-click any job ID in your code to verify its Digital Seal directly in VS Code.
+## Install from source
 
-### One-Click Devnet
-Start and stop the local Aethelred testnet (Docker) from the command palette:
-- `Aethelred: Start Local Devnet`
-- `Aethelred: Stop Local Devnet`
-
-### Job Submission
-Submit compute jobs to any network without leaving your editor:
-- `Aethelred: Submit Compute Job`
-
----
-
-## Commands
-
-| Command | Description |
-|---|---|
-| `Aethelred: Submit Compute Job` | Submit a PoUW compute job |
-| `Aethelred: Verify Digital Seal` | Verify a job's Digital Seal |
-| `Aethelred: Start Local Devnet` | Start Docker-based local testnet |
-| `Aethelred: Stop Local Devnet` | Stop local testnet |
-| `Aethelred: Show Node Status` | Display node health in output panel |
-
----
-
-## Configuration
-
-```json
-{
- "aethelred.rpcUrl": "http://localhost:26657",
- "aethelred.network": "local",
- "aethelred.autoStartDevnet": false
-}
+```bash
+npm install
+npm run build
 ```
 
----
+To package a VSIX locally:
+
+```bash
+npm run package:check
+```
+
+The packaged extension is written to `dist/aethelred-sovereign-copilot.vsix`.
 
 ## Development
 
 ```bash
 npm install
-npm run compile
-# Press F5 in VS Code to launch Extension Development Host
+npm run build
+npm run lint
 ```
 
----
+In VS Code:
 
-## Why This Is Unique
+1. Open this repository.
+2. Run `Extensions: Show Running Extensions` if you need to inspect activation state.
+3. Launch the extension host with `F5`.
 
-No other Layer 1 blockchain (Ethereum, Solana, Aptos, Sui, Celestia, Cosmos Hub) ships an official, feature-complete VS Code extension. This puts Aethelred **years ahead** in developer UX.
+## Repository layout
+
+- `src/` — extension source
+- `syntaxes/` — Helix grammar and language configuration
+- `snippets/` — language snippets
+- `assets/` — icons and package assets
+
+## Security
+
+Security reports should not be filed in public issues.
+
+Use:
+
+- `security@aethelred.io`
+- [Security policy](SECURITY.md)
+
+## License
+
+Apache-2.0

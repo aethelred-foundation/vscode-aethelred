@@ -1,0 +1,12 @@
+**/.git/**
+**/.github/**
+**/.vscode/**
+**/src/**
+**/tsconfig.json
+**/.eslintrc.cjs
+**/node_modules/**
+**/dist/**
+.gitignore
+.mailmap
+CODEOWNERS
+SECURITY.md
